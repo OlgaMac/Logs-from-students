@@ -23,7 +23,7 @@ import java.util.Properties;
 
 @Configuration
 @ComponentScan("com.aston.studentslogs")
-@PropertySource("classpath:hibernate.properties")
+@PropertySource("classpath:application.properties")
 @EnableTransactionManagement
 @EnableJpaRepositories("com.aston.studentslogs")
 @EnableWebMvc
@@ -71,9 +71,9 @@ public class DBConfig implements WebMvcConfigurer {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
         dataSource.setDriverClassName(env.getRequiredProperty("hibernate.driver_class"));
-        dataSource.setUrl(env.getRequiredProperty("hibernate.connection.url"));
-        dataSource.setUsername(env.getRequiredProperty("hibernate.connection.username"));
-        dataSource.setPassword(env.getRequiredProperty("hibernate.connection.password"));
+        dataSource.setUrl(env.getRequiredProperty("spring.datasource.url"));
+        dataSource.setUsername(env.getRequiredProperty("spring.datasource.username"));
+        dataSource.setPassword(env.getRequiredProperty("spring.datasource.password"));
 
         return dataSource;
     }
@@ -90,7 +90,7 @@ public class DBConfig implements WebMvcConfigurer {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan("ru.alishev.springcourse.models");
+        em.setPackagesToScan("com.aston.studentslogs");
 
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
