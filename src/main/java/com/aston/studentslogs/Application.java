@@ -1,15 +1,7 @@
 package com.aston.studentslogs;
 
 import com.aston.studentslogs.config.Config;
-import org.springframework.web.filter.CharacterEncodingFilter;
-import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-
-import javax.servlet.DispatcherType;
-import javax.servlet.FilterRegistration;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import java.util.EnumSet;
 
 public class Application extends AbstractAnnotationConfigDispatcherServletInitializer {
         @Override
