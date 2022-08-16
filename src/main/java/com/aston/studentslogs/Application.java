@@ -1,5 +1,6 @@
-package com.aston.studentslogs.config;
+package com.aston.studentslogs;
 
+import com.aston.studentslogs.config.Config;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -10,7 +11,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import java.util.EnumSet;
 
-public class MvcDispatcherSerlvetIntitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class Application extends AbstractAnnotationConfigDispatcherServletInitializer {
         @Override
         protected Class<?>[] getRootConfigClasses() {
             return null;
@@ -18,7 +19,7 @@ public class MvcDispatcherSerlvetIntitializer extends AbstractAnnotationConfigDi
 
         @Override
         protected Class<?>[] getServletConfigClasses() {
-            return new Class[]{DBConfig.class};
+            return new Class[]{Config.class};
         }
 
         @Override

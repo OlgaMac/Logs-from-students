@@ -25,12 +25,12 @@ import java.util.Properties;
 @EnableTransactionManagement
 @EnableJpaRepositories("com.aston.studentslogs")
 @EnableWebMvc
-public class DBConfig implements WebMvcConfigurer {
+public class Config implements WebMvcConfigurer {
 
     private final Environment env;
 
     @Autowired
-    public DBConfig(Environment env) {
+    public Config(Environment env) {
         this.env = env;
     }
 
