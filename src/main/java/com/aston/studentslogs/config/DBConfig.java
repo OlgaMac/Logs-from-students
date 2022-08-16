@@ -29,42 +29,12 @@ import java.util.Properties;
 @EnableWebMvc
 public class DBConfig implements WebMvcConfigurer {
 
-    private final ApplicationContext applicationContext;
-
     private final Environment env;
 
     @Autowired
-    public DBConfig(ApplicationContext applicationContext, Environment env) {
-        this.applicationContext = applicationContext;
+    public DBConfig(Environment env) {
         this.env = env;
     }
-
-//    @Bean
-//    public SpringResourceTemplateResolver templateResolver() {
-//        SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
-//        templateResolver.setApplicationContext(applicationContext);
-//        templateResolver.setPrefix("/WEB-INF/views/");
-//        templateResolver.setSuffix(".html");
-//        templateResolver.setCharacterEncoding("UTF-8");
-//        return templateResolver;
-//    }
-//
-//    @Bean
-//    public SpringTemplateEngine templateEngine() {
-//        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-//        templateEngine.setTemplateResolver(templateResolver());
-//        templateEngine.setEnableSpringELCompiler(true);
-//        return templateEngine;
-//    }
-//
-//    @Override
-//    public void configureViewResolvers(ViewResolverRegistry registry) {
-//        ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-//        resolver.setTemplateEngine(templateEngine());
-//        resolver.setCharacterEncoding("UTF-8");
-//
-//        registry.viewResolver(resolver);
-//    }
 
     @Bean
     public DataSource dataSource() {
