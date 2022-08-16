@@ -21,9 +21,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import javax.sql.DataSource;
 import java.util.Properties;
 
-/**
- * @author Neil Alishev
- */
 @Configuration
 @ComponentScan("com.aston.studentslogs")
 @PropertySource("classpath:hibernate.properties")
