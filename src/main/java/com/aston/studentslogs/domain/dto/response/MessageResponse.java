@@ -1,4 +1,4 @@
-package com.aston.studentslogs.dto.response;
+package com.aston.studentslogs.domain.dto.response;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;

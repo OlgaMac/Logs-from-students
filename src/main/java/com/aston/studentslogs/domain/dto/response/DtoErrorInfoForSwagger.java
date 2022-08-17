@@ -1,4 +1,4 @@
-package com.aston.studentslogs.dto.response;
+package com.aston.studentslogs.domain.dto.response;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
