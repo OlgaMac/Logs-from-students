@@ -38,9 +38,10 @@ public class MessageServiceImpl implements MessageService {
     public List<MessageEntity> findByStudentId(Long studentId) {
         return messageRepository.findByStudentId(studentId);
     }
+
     @Transactional
-    public MessageEntity findOne (Long id){
-       Optional<MessageEntity> messageEntity = messageRepository.findById(id);
+    public MessageEntity findOne(Long id) {
+        Optional<MessageEntity> messageEntity = messageRepository.findById(id);
         return messageEntity.orElseThrow(IllegalArgumentException::new);
     }
 }
