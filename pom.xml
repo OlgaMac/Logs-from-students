@@ -184,7 +184,6 @@
                 <version>4.0.0</version>
                 <configuration>
                     <propertyFile>src/main/resources/liquibase/liquibase.yml</propertyFile>
-                    <changeLogFile>db.changelog-master.xml</changeLogFile>
                 </configuration>
                 <dependencies>
                     <dependency>
