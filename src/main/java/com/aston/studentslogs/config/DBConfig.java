@@ -1,5 +1,6 @@
 package com.aston.studentslogs.config;
 
+import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -28,6 +29,15 @@ import java.util.Properties;
 public class DBConfig implements WebMvcConfigurer {
 
     private final Environment env;
+
+    @Bean
+    public SpringLiquibase liquibase() {
+        SpringLiquibase liquibase = new SpringLiquibase();
+        liquibase.setChangeLog("liquibase/db.changelog-master.xml");
+        liquibase.setDataSource(dataSource());
+
+        return liquibase;
+    }
 
     @Autowired
     public DBConfig(Environment env) {
