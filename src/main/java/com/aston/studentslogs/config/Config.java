@@ -30,15 +30,6 @@ public class Config implements WebMvcConfigurer {
 
     private final Environment env;
 
-    @Bean
-    public SpringLiquibase liquibase() {
-        SpringLiquibase liquibase = new SpringLiquibase();
-        liquibase.setChangeLog("liquibase/db.changelog-master.xml");
-        liquibase.setDataSource(dataSource());
-
-        return liquibase;
-    }
-
     @Autowired
     public Config(Environment env) {
         this.env = env;
@@ -54,6 +45,15 @@ public class Config implements WebMvcConfigurer {
         dataSource.setPassword(env.getRequiredProperty("spring.datasource.password"));
 
         return dataSource;
+    }
+
+    @Bean
+    public SpringLiquibase liquibase() {
+        SpringLiquibase liquibase = new SpringLiquibase();
+        liquibase.setChangeLog("liquibase/db.changelog-master.xml");
+        liquibase.setDataSource(dataSource());
+
+        return liquibase;
     }
 
     private Properties hibernateProperties() {

@@ -2,4 +2,5 @@ liquibase:
   change-log: classpath:liquibase/db.changelog-master.xml
   url: jdbc:postgresql://localhost:5432/logging_project
   user: postgres
-  password: postgres
+  password: root
+  driver-class-name: org.postgresql.Driver
