@@ -1,5 +1,6 @@
 package com.aston.studentslogs.config;
 
+import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -44,6 +45,15 @@ public class Config implements WebMvcConfigurer {
         dataSource.setPassword(env.getRequiredProperty("spring.datasource.password"));
 
         return dataSource;
+    }
+
+    @Bean
+    public SpringLiquibase liquibase() {
+        SpringLiquibase liquibase = new SpringLiquibase();
+        liquibase.setChangeLog("liquibase/db.changelog-master.yml");
+        liquibase.setDataSource(dataSource());
+
+        return liquibase;
     }
 
     private Properties hibernateProperties() {
