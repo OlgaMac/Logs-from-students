@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,9 +19,11 @@ public class MessageResponse {
 
     private Long id;
 
+    private Long studentId;
+
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
-    private Long studentId;
+    private LocalDateTime created;
 
     private String text;
 
