@@ -36,8 +36,8 @@ public class StudentEntity {
     private String firstName;
     @Column(name = "lastname")
     private String lastName;
-    @JsonIgnore
-    @OneToMany(mappedBy = "student",
-            cascade = CascadeType.ALL)
-    private List<MessageEntity> messages;
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "student",
+//            cascade = CascadeType.ALL)
+//    private List<MessageEntity> messages;
 }

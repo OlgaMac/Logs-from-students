@@ -11,5 +11,4 @@ public interface StudentMapper {
     StudentResponse toResponse (StudentEntity studentEntity);
     StudentEntity fromRequest (StudentRequest studentRequest);
     StudentEntity fromUpdate (StudentRequestUpdate studentRequestUpdate);
-    StudentEntity merge (StudentEntity source, StudentEntity target);
 }
