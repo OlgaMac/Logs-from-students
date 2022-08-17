@@ -1,15 +1,18 @@
-package com.aston.studentslogs.config.domain.dto.request;
+package com.aston.studentslogs.domain.dto.response;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
+import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class StudentRequestUpdate {
+@Accessors
+public class StudentResponse {
     private Long id;
     private String firstName;
     private String lastName;
-
+    private List<Long> idOfLogs;
 }

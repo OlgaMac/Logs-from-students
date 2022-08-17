@@ -1,9 +1,9 @@
-package com.aston.studentslogs.config.domain.mapper;
+package com.aston.studentslogs.domain.mapper;
 
-import com.aston.studentslogs.config.domain.dto.request.StudentRequest;
-import com.aston.studentslogs.config.domain.dto.request.StudentRequestUpdate;
-import com.aston.studentslogs.config.domain.dto.response.StudentResponse;
-import com.aston.studentslogs.config.domain.entity.StudentEntity;
+import com.aston.studentslogs.domain.dto.request.StudentRequest;
+import com.aston.studentslogs.domain.dto.request.StudentRequestUpdate;
+import com.aston.studentslogs.domain.dto.response.StudentResponse;
+import com.aston.studentslogs.domain.entity.StudentEntity;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
