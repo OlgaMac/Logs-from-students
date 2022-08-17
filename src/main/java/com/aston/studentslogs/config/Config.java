@@ -50,11 +50,12 @@ public class Config implements WebMvcConfigurer {
     @Bean
     public SpringLiquibase liquibase() {
         SpringLiquibase liquibase = new SpringLiquibase();
-        liquibase.setChangeLog("liquibase/db.changelog-master.yml");
+        liquibase.setChangeLog("liquibase/db.changelog_master.yml");
         liquibase.setDataSource(dataSource());
 
         return liquibase;
     }
+
 
     private Properties hibernateProperties() {
         Properties properties = new Properties();
