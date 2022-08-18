@@ -3,6 +3,7 @@ package com.aston.studentslogs.service.implementation;
 import com.aston.studentslogs.domain.entity.MessageEntity;
 import com.aston.studentslogs.domain.entity.StudentEntity;
 import com.aston.studentslogs.repository.MessageRepository;
+import com.aston.studentslogs.repository.StudentRepository;
 import com.aston.studentslogs.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,10 +29,10 @@ public class MessageServiceImpl implements MessageService {
     @Override
     @Transactional
     public MessageEntity createMessage(Long studentId, String message) {
-        StudentEntity student = studentRepository.getById(studentId);
+        Optional<StudentEntity> student = studentRepository.findById(studentId);
         MessageEntity messageEntity = new MessageEntity();
         messageEntity.setMessage(message);
-        messageEntity.setStudent(student);
+        messageEntity.setStudent(student.get());
         messageRepository.save(messageEntity);
         return messageEntity;
     }
