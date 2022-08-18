@@ -4,12 +4,12 @@ import com.aston.studentslogs.domain.entity.StudentEntity;
 import com.aston.studentslogs.repository.StudentRepository;
 import com.aston.studentslogs.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service
+@Component
 @Transactional(readOnly = true)
 public class StudentServiceImpl implements StudentService {
 

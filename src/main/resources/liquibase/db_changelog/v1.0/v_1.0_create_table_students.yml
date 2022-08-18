@@ -21,12 +21,12 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
               - column:
-                  name: lastName
+                  name: last_name
                   type: VARCHAR(255)
                   constraints:
                     nullable: false
               - column:
-                  name: firstName
+                  name: first_name
                   type: VARCHAR(255)
                   constraints:
                     nullable: false

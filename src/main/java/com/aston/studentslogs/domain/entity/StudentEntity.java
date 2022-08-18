@@ -11,14 +11,17 @@ import org.hibernate.annotations.Parameter;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.GenerationType.SEQUENCE;
+import static lombok.AccessLevel.PRIVATE;
 
 @Entity
 @Getter
@@ -28,18 +31,18 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @Table(name = "students")
 public class StudentEntity {
     @Id
-    @GeneratedValue(strategy = SEQUENCE, generator = "seq_student_id")
-    @GenericGenerator(name = "seq_student_id",
+    @GeneratedValue(strategy = SEQUENCE, generator = "seq_students_id")
+    @GenericGenerator(name = "seq_students_id",
             strategy = "sequence",
-            parameters = {@Parameter(name = "sequence", value = "seq_student_id")})
-    @Column(name = "id")
+            parameters = {@Parameter(name = "sequence", value = "seq_students_id")})
+
     private Long id;
-    @Column(name = "firstname")
-    private String firstName;
-    @Column(name = "lastname")
+    @Column(name = "last_name")
     private String lastName;
+    @Column(name = "first_name")
+    private String firstName;
     @JsonIgnore
-    @OneToMany(mappedBy = "student",
-            cascade = CascadeType.ALL)
-    private List<MessageEntity> messages;
+    @Setter(PRIVATE)
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<MessageEntity> logs = new ArrayList<>();
 }

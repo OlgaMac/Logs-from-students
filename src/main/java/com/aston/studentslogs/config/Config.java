@@ -32,7 +32,7 @@ import java.util.Properties;
 @PropertySource("classpath:application.properties")
 @EnableTransactionManagement
 @EnableSwagger2
-@EnableJpaRepositories("com.aston.studentslogs")
+@EnableJpaRepositories(basePackages = {"com.aston.studentslogs.repository"})
 @EnableWebMvc
 public class Config implements WebMvcConfigurer {
 
@@ -77,7 +77,7 @@ public class Config implements WebMvcConfigurer {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan("com.aston.studentslogs");
+        em.setPackagesToScan("com.aston.studentslogs.domain");
 
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
