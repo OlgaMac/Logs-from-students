@@ -29,10 +29,10 @@ public class MessageServiceImpl implements MessageService {
     @Override
     @Transactional
     public MessageEntity createMessage(Long studentId, String message) {
-        StudentEntity student = studentRepository.getById(studentId);
+        Optional<StudentEntity> student = studentRepository.findById(studentId);
         MessageEntity messageEntity = new MessageEntity();
         messageEntity.setMessage(message);
-        messageEntity.setStudent(student);
+        messageEntity.setStudent(student.get());
         messageRepository.save(messageEntity);
         return messageEntity;
     }
