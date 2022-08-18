@@ -1,0 +1,6 @@
+databaseChangeLog:
+  - include:
+      file: classpath:liquibase/db_changelog/v1.0/v_1.0_create_table_students.yml
+  - include:
+      file: classpath:liquibase/db_changelog/v1.0/v_1.1_create_table_message.yml
+

@@ -29,7 +29,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "logs")
+@Table(name = "messages")
 @JsonIgnoreProperties
 public class MessageEntity {
 
@@ -44,7 +44,7 @@ public class MessageEntity {
     @Column(name = "date")
     private LocalDate date;
 
-    @Column(name = "message")
+    @Column(name = "text")
     private String message;
 
     @JsonIgnore
