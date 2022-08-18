@@ -3,6 +3,7 @@ package com.aston.studentslogs.service.implementation;
 import com.aston.studentslogs.domain.entity.MessageEntity;
 import com.aston.studentslogs.domain.entity.StudentEntity;
 import com.aston.studentslogs.repository.MessageRepository;
+import com.aston.studentslogs.repository.StudentRepository;
 import com.aston.studentslogs.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
