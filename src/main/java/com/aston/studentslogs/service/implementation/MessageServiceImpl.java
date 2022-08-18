@@ -1,6 +1,7 @@
 package com.aston.studentslogs.service.implementation;
 
 import com.aston.studentslogs.domain.entity.MessageEntity;
+import com.aston.studentslogs.domain.entity.StudentEntity;
 import com.aston.studentslogs.repository.MessageRepository;
 import com.aston.studentslogs.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,18 +15,25 @@ import java.util.Optional;
 @Transactional(readOnly = true)
 public class MessageServiceImpl implements MessageService {
     private final MessageRepository messageRepository;
+    private final StudentRepository studentRepository;
 
 
     @Autowired
-    public MessageServiceImpl(MessageRepository messageRepository) {
+    public MessageServiceImpl(MessageRepository messageRepository, StudentRepository studentRepository) {
         this.messageRepository = messageRepository;
+        this.studentRepository = studentRepository;
     }
 
 
     @Override
     @Transactional
     public MessageEntity createMessage(Long studentId, String message) {
-        return null;
+        StudentEntity student = studentRepository.getById(studentId);
+        MessageEntity messageEntity = new MessageEntity();
+        messageEntity.setMessage(message);
+        messageEntity.setStudent(student);
+        messageRepository.save(messageEntity);
+        return messageEntity;
     }
 
     @Override
