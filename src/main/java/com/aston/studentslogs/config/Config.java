@@ -1,5 +1,6 @@
 package com.aston.studentslogs.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -31,7 +32,7 @@ import java.util.Properties;
 @PropertySource("classpath:application.properties")
 @EnableTransactionManagement
 @EnableSwagger2
-@EnableJpaRepositories("com.aston.studentslogs")
+@EnableJpaRepositories(basePackages = {"com.aston.studentslogs.repository"})
 @EnableWebMvc
 public class Config implements WebMvcConfigurer {
 
@@ -76,7 +77,7 @@ public class Config implements WebMvcConfigurer {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan("com.aston.studentslogs");
+        em.setPackagesToScan("com.aston.studentslogs.domain");
 
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
@@ -91,6 +92,10 @@ public class Config implements WebMvcConfigurer {
         transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
 
         return transactionManager;
+    }
+    @Bean
+    public ObjectMapper objectMapper() {
+        return new ObjectMapper();
     }
 
     @Bean

@@ -6,13 +6,14 @@ import com.aston.studentslogs.repository.MessageRepository;
 import com.aston.studentslogs.repository.StudentRepository;
 import com.aston.studentslogs.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Component
 @Transactional(readOnly = true)
 public class MessageServiceImpl implements MessageService {
     private final MessageRepository messageRepository;
@@ -32,20 +33,23 @@ public class MessageServiceImpl implements MessageService {
         Optional<StudentEntity> student = studentRepository.findById(studentId);
         MessageEntity messageEntity = new MessageEntity();
         messageEntity.setMessage(message);
+        messageEntity.setDate(LocalDate.now());
         messageEntity.setStudent(student.get());
         messageRepository.save(messageEntity);
         return messageEntity;
     }
 
     @Override
+    @Transactional
     public MessageEntity updateMessage(MessageEntity messageEntity) {
         messageRepository.save(messageEntity);
         return messageEntity;
     }
 
     @Override
+    @Transactional
     public List<MessageEntity> findByStudentId(Long studentId) {
-        return messageRepository.findByStudentId(studentId);
+        return messageRepository.findAllById(studentId);
     }
 
     @Transactional

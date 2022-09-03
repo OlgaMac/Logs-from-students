@@ -25,14 +25,16 @@ import static org.springframework.http.HttpStatus.OK;
 @RestController
 @RequestMapping("/messages")
 public class MessageController {
-    private final MessageService messageService;
-    private final MessageMapper messageMapper;
-
     @Autowired
-    public MessageController(MessageService messageService, MessageMapper messageMapper) {
-        this.messageService = messageService;
-        this.messageMapper = messageMapper;
-    }
+    public MessageService messageService;
+    @Autowired
+    public MessageMapper messageMapper;
+
+//    @Autowired
+//    public MessageController(MessageService messageService, MessageMapper messageMapper) {
+//        this.messageService = messageService;
+//        this.messageMapper = messageMapper;
+//    }
 
     @ApiOperation(value = "Получение всех логов для студента")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Логи найдены",
@@ -52,7 +54,7 @@ public class MessageController {
             @ApiResponse(code = 400, message = "Ошибка валидации", response = DtoErrorInfoForSwagger.class),
             @ApiResponse(code = 500, message = "Внутренняя ошибка сервера", response = DtoErrorInfoForSwagger.class)})
     @PostMapping("/newlog")
-    public ResponseEntity<MessageResponse> createNewLogs(@RequestParam Long id, @RequestParam String message) {
+    public ResponseEntity<MessageResponse> createNewLogs(@RequestParam Long id, @RequestBody String message) {
         MessageEntity messageEntity = messageService.createMessage(id, message);
         MessageResponse messageResponse = Optional.ofNullable(messageEntity)
                 .map(messageMapper::toResponse)

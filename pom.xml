@@ -14,7 +14,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <org.springframework.version>5.2.15.RELEASE</org.springframework.version>
+        <org.springframework.version>5.3.15</org.springframework.version>
         <javax.servlet.version>3.0.1</javax.servlet.version>
         <org.postgresql.version>42.3.3</org.postgresql.version>
         <org.mockito.version>4.6.1</org.mockito.version>
@@ -73,12 +73,22 @@
             <artifactId>spring-orm</artifactId>
             <version>${org.springframework.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-rest-webmvc</artifactId>
+            <version>3.5.5</version>
+        </dependency>
 
         <!-- Hibernate -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>5.4.28.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>4.3.8.Final</version>
         </dependency>
 
         <!-- Databases - Uses H2 by default -->
